@@ -1,8 +1,7 @@
 name: WebRTC Release
 run-name: WebRTC Release
 on:
-  schedule:
-    - cron: '0 12 * * 3'
+  workflow_dispatch
 jobs:
   Build-Script:
     runs-on: macos-latest
@@ -18,6 +17,5 @@ jobs:
       - name: Running WebRTC weekly release checks
         run: |
           sh clean.sh
-          pip install requests python-telegram-bot
           python -u scripts/release.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
